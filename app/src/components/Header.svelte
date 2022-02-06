@@ -3,15 +3,24 @@
   This code is licensed under MIT license (see LICENSE for details)
 -->
 <script>
+	import { onMount } from "svelte";
+
 	import Dropdown from '@components/elements/Dropdown.svelte';
 	import Button from '@components/elements/Button.svelte';
 	import Moralis from 'moralis/dist/moralis.min.js';
-	const userAddress =  Moralis.User.current().attributes.ethAddress;
+
 	export let hasButton = true;
 	export let hasMenu = true;
 
 	export let menuLabels;
 	export let buttonLabel;
+
+
+	let userAddress;
+
+	onMount(() => {
+		userAddress =  Moralis.User.current().get('ethAddress');
+	})
 </script>
 
 <style>
@@ -50,7 +59,7 @@
 <div id="wrapper">
 	<p>PolyBingo</p>
 
-	<!-- 
+	<!--
 	{#if (hasMenu)}
 		<Dropdown on:itemSelected labels="{menuLabels}"  />
 	{/if}
