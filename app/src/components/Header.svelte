@@ -7,7 +7,7 @@
 
 	import Dropdown from '@components/elements/Dropdown.svelte';
 	import Button from '@components/elements/Button.svelte';
-	import Moralis from 'moralis/dist/moralis.min.js';
+	import { moralis } from "$lib/stores";
 
 	export let hasButton = true;
 	export let hasMenu = true;
@@ -19,7 +19,7 @@
 	let userAddress;
 
 	onMount(() => {
-		userAddress =  Moralis.User.current().get('ethAddress');
+		//userAddress =  $moralis.User.current().get('ethAddress');
 	})
 </script>
 
@@ -69,6 +69,6 @@
 	{/if} -->
 	<div id="current-username">
 	<img src={"https://avatars.dicebear.com/api/identicon/"+userAddress+".svg"} width="48" alt=" account identicon ">
-	<span >{userAddress.slice(0,10)+"..."}</span>
+	<span >{userAddress?.slice(0,10)+"..."}</span>
 	</div>
 </div>
