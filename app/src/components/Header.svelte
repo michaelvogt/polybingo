@@ -19,7 +19,7 @@
 	let userAddress;
 
 	onMount(() => {
-		//userAddress =  $moralis.User.current().get('ethAddress');
+		userAddress =  $moralis.User.current().get('ethAddress');
 	})
 </script>
 
